@@ -1,24 +1,39 @@
 package org.example;
 
 public class HaltChecker {
-    public static String analyzeProgram(String program, String input) {
-        if (program.equals("Reverser")) {
-            return Reverser.analyze(input);
-        } else if (program.equals("Factorial")) {
-            return Factorial.analyze(input);
-        } else if (program.equals("Fibonacci")) {
-            return Fibonacci.analyze(input);
+    private Reverser reverser;
+    private Factorial factorial;
+    private Fibonacci fibonacci;
+
+    public HaltChecker(String input) {
+        this.reverser = new Reverser(input);
+        this.factorial = new Factorial(0);  // Establecer un valor predeterminado
+        this.fibonacci = new Fibonacci(0);  // Establecer un valor predeterminado
+    }
+
+    public boolean shouldHalt() {
+        boolean halt1 = reverser.check();
+        boolean halt2 = factorial.check();
+        boolean halt3 = fibonacci.check();
+
+        return halt1 || halt2 || halt3;
+    }
+
+    public void analyzeProgram() {
+        // Lógica para analizar el programa y tomar decisiones
+        if (shouldHalt()) {
+            System.out.println("El programa debe detenerse.");
         } else {
-            return "desconocido";
+            System.out.println("El programa puede continuar.");
         }
     }
 }
 
 
-    // La clase HaltChecker actúa como un analizador de programas.
-    // Tiene un método estático llamado analyzeProgram que toma dos argumentos: el nombre del programa y el input.
-    // Este método determina qué programa se debe analizar y llama al método analyze correspondiente en la clase respectiva.
-    // Si el programa es "Reverser", se llama al método analyze en la clase Reverser.
-    // Si el programa es "Factorial", se llama al método analyze en la clase Factorial.
-    // Si el programa es "Fibonacci", se llama al método analyze en la clase Fibonacci.
-    // Si se proporciona un nombre de programa desconocido, se devuelve el texto "desconocido".
+
+
+//Esta clase se encarga de verificar si un programa debe detenerse o puede continuar en función de diferentes condiciones.
+//Tiene tres atributos: reverser, factorial y fibonacci.
+//El constructor recibe un parámetro input que se utiliza para inicializar el objeto reverser y establecer valores predeterminados para factorial y fibonacci.
+//El método shouldHalt() verifica las condiciones de cada objeto (reverser, factorial y fibonacci) y devuelve true si alguna de las condiciones se cumple, lo que indica que el programa debe detenerse.
+//El método analyzeProgram() utiliza el resultado de shouldHalt() para imprimir un mensaje indicando si el programa debe detenerse o puede continuar.

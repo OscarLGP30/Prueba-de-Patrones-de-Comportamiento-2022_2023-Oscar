@@ -1,18 +1,40 @@
 package org.example;
 
 public class Fibonacci {
-    public static String analyze(String input) {
-            //Asumiremos que es aleatorio
-        if (Math.random() < 0.5) {
-            return "para";
-        } else {
-            return "nunca";
+    private int number;
+
+    public Fibonacci(int number) {
+        this.number = number;
+    }
+
+    public boolean check() {
+        // Lógica para verificar la condición de Fibonacci
+        // Devuelve true si se cumple la condición, false de lo contrario
+        if (number < 0) {
+            return false; // La secuencia de Fibonacci no está definida para números negativos
         }
+
+        int fib1 = 0;
+        int fib2 = 1;
+        int fib = fib1 + fib2;
+
+        while (fib <= number) {
+            if (fib == number) {
+                return true; // Se cumple la condición de Fibonacci
+            }
+
+            fib1 = fib2;
+            fib2 = fib;
+            fib = fib1 + fib2;
+        }
+
+        return false; // No se cumple la condición de Fibonacci
     }
 }
 
 
-    //La clase Fibonacci representa el programa "Fibonacci", que genera la secuencia de Fibonacci hasta un número determinado.
-    //En este ejemplo, la lógica de análisis del programa "Fibonacci" es aleatoria.
-    //La decisión de si el programa se detiene o no se basa en un número aleatorio.
-    //Si el número aleatorio es menor que 0.5, se devuelve el texto "para"; de lo contrario, se devuelve el texto "nunca"
+//Esta clase se encarga de verificar si un número cumple la condición de pertenecer a la secuencia de Fibonacci.
+//El constructor recibe un parámetro number que representa el número a verificar.
+//El método check() verifica si el número es negativo y retorna false en ese caso.
+//Luego, realiza un bucle para calcular los números de la secuencia de Fibonacci y compara si alguno coincide con el número original.
+//Si lo hace, retorna true indicando que se cumple la condición de Fibonacci.
