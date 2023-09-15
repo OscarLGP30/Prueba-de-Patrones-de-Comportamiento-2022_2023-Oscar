@@ -41,9 +41,14 @@ public class Main {
         checker2.analyzeProgram();
         checker3.analyzeProgram();
     }
+
 }
 
 //Esta clase contiene el método main donde se crea instancias de las clases HaltChecker, Factorial, Fibonacci y Reverser.
 //Se invoca el método shouldHalt() de los objetos HaltChecker para verificar si se deben detener o continuar según las condiciones de cada uno.
 //Se realizan algunas verificaciones adicionales utilizando los objetos Factorial, Fibonacci y Reverser para mostrar ejemplos de cómo se utilizan.
 //Finalmente, se llama al método analyzeProgram() de los objetos HaltChecker para analizar el programa y mostrar si debe detenerse o continuar según las condiciones verificadas.
+//observer
+//factory method
+//chain of the responsability
+
